@@ -37,6 +37,9 @@ El framework está organizado en una arquitectura modular, limpia y escalable. A
 │ ├── ShapeManager.js # Gestor de formas y elementos gráficos
 │ ├── Sidebar.js # Lógica del panel lateral de herramientas
 │ ├── Toolbar.js # Controles de herramientas principales
+│
+├── LICENSE # Archivo de licencia del proyecto
+└── README.md # Documentación principal del proyecto
 
 ---
 
