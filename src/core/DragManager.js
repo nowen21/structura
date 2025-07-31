@@ -22,37 +22,36 @@ export class DragManager {
      * Activar el arrastre sobre un elemento (nodo).
      * @param {HTMLElement} elemento - El nodo que quieres que se pueda mover.
      */
-    habilitarArrastre(nodo) {
-        let offsetX, offsetY, inicialX, inicialY;
+    habilitarArrastre(e, nodo) {
+        if (e.target.closest('.acciones-nodo')) return;
+        e.preventDefault();
 
-        nodo.onmousedown = (e) => {
-            if (e.target.closest('.acciones-nodo')) return;
-            e.preventDefault();
+        let inicialX = e.clientX;
+        let inicialY = e.clientY;
+
+        const onMouseMove = e => {
+            const offsetX = e.clientX - inicialX;
+            const offsetY = e.clientY - inicialY;
+
+            nodo.style.top = (nodo.offsetTop + offsetY) + 'px';
+            nodo.style.left = (nodo.offsetLeft + offsetX) + 'px';
 
             inicialX = e.clientX;
             inicialY = e.clientY;
 
-            document.onmousemove = (e) => {
-                offsetX = e.clientX - inicialX;
-                offsetY = e.clientY - inicialY;
-
-                nodo.style.top = (nodo.offsetTop + offsetY) + 'px';
-                nodo.style.left = (nodo.offsetLeft + offsetX) + 'px';
-
-                inicialX = e.clientX;
-                inicialY = e.clientY;
-
-                this.connectorManager.actualizarTodo();
-            };
-
-            document.onmouseup = () => {
-                document.onmousemove = null;
-                document.onmouseup = null;
-            };
+            this.connectorManager.actualizarTodo();
         };
+
+        const onMouseUp = () => {
+            document.removeEventListener('mousemove', onMouseMove);
+            document.removeEventListener('mouseup', onMouseUp);
+        };
+
+        document.addEventListener('mousemove', onMouseMove);
+        document.addEventListener('mouseup', onMouseUp);
     }
 
-    
+
 
     /**
      * Esta función se ejecuta cuando el mouse se está moviendo mientras arrastras.

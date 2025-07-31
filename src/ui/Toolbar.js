@@ -19,9 +19,9 @@ export class Toolbar {
     vincularEventos(manager) {
         if (this.eventosVinculados) return;
         this.diagramManager = manager;
-        
-       // this._vincularBoton('btn-conectar', () => this.diagramManager.activarModoConexion());
-        this._vincularBoton('btn-nuevo', () => this.diagramManager.limpiar());
+
+        this._vincularBoton('btn-conectar', () => this.diagramManager.conectarNodos());
+        this._vincularBoton('btn-nuevo', () => this.diagramManager.nuevoDiagrama());
         this._vincularBoton('btn-nodo', () => this.diagramManager.agregarNodo('idea'));
         this._vincularBoton('btn-texto', () => this.diagramManager.agregarTexto());
         this._vincularBoton('btn-imagen', () => this.diagramManager.agregarImagen());
@@ -49,7 +49,7 @@ export class Toolbar {
             console.warn(`Botón con ID "${idBoton}" no encontrado.`);
         }
     }
-// cómo hago para vincular este al nodo?
+    // cómo hago para vincular este al nodo?
     btnConectar(nodo) {
         const boton = nodo.querySelector('.btn-conectar');
         if (!boton) return;

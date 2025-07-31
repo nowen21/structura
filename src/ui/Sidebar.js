@@ -1,6 +1,21 @@
 /**
  * Clase Sidebar
- * Controla el panel lateral para mostrar y editar propiedades del nodo seleccionado.
+ * 
+ * Representa el componente de interfaz que controla el panel lateral del framework.
+ * Su función principal es mostrar y permitir la edición de las propiedades 
+ * del nodo actualmente seleccionado por el usuario.
+ * 
+ * Funcionalidades clave:
+ * - Visualizar la información del nodo (texto, color, forma, posición, conexiones, etc.)
+ * - Permitir modificar sus atributos de manera interactiva (por ejemplo: cambiar color o forma)
+ * - Mostrar opciones contextuales según el tipo de gráfico o el rol del nodo
+ * - Mantener sincronización con el estado actual del diagrama y de DiagramManager
+ * 
+ * Esta clase actúa como puente entre la lógica del nodo (modelo) y la vista (UI),
+ * proporcionando una interfaz visual para editar nodos sin necesidad de interactuar 
+ * directamente con el canvas.
+ * 
+ * Dependencias: Node, ShapeManager, DiagramManager (inyectado)
  */
 export class Sidebar {
     /**

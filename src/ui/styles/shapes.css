@@ -1,0 +1,117 @@
+/* === FORMAS PERSONALIZADAS === */
+
+/* Forma básica (rectángulo) - opcional si ya usas Bootstrap por defecto */
+.forma-rectangulo {
+    border-radius: 0;
+}
+
+/* Elipse (ya cubierta por Bootstrap con rounded-pill) */
+.forma-elipse {
+    border-radius: 999px;
+}
+
+/* Círculo (Bootstrap: rounded-circle + igual ancho/alto) */
+.forma-circulo {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+}
+
+/* Rombo (gira un cuadrado) */
+.forma-rombo {
+    transform: rotate(45deg);
+    width: 100px;
+    height: 100px;
+}
+
+/* Hexágono */
+.forma-hexagono {
+    width: 100px;
+    height: 55px;
+    background-color: #007bff;
+    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+}
+
+/* Trapecio */
+.forma-trapecio {
+    width: 120px;
+    height: 70px;
+    background-color: #198754;
+    clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
+}
+
+/* Estrella (solo decorativa por ahora, mejor usar SVG) */
+.forma-estrella {
+    background-image: url('/assets/svg/estrella.svg');
+    background-size: cover;
+    width: 100px;
+    height: 100px;
+}
+
+/* Nube */
+.forma-nube {
+    background-image: url('/assets/svg/nube.svg');
+    background-size: cover;
+    width: 120px;
+    height: 80px;
+}
+
+/* Paralelogramo */
+.forma-paralelogramo {
+    width: 120px;
+    height: 70px;
+    background-color: #ffc107;
+    transform: skew(-20deg);
+}
+
+/* Nota adhesiva con esquina doblada */
+.forma-nota {
+    position: relative;
+    background: #f7f7a3;
+    width: 120px;
+    height: 80px;
+    border: 1px solid #ccc;
+}
+.forma-nota::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    border-width: 0 0 20px 20px;
+    border-style: solid;
+    border-color: transparent transparent #e0e062 transparent;
+}
+
+/* Carpeta */
+.forma-carpeta {
+    background-image: url('/assets/svg/carpeta.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 120px;
+    height: 90px;
+}
+
+/* Documento */
+.forma-documento {
+    background-image: url('/assets/svg/documento.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 100px;
+    height: 130px;
+}
+
+/* Espina de pescado - Ishikawa (decorativa) */
+.forma-ishikawa {
+    background-image: url('/assets/svg/ishikawa.svg');
+    background-size: cover;
+    width: 200px;
+    height: 60px;
+}
+
+/* Proceso técnico (engranaje) */
+.forma-engranaje {
+    background-image: url('/assets/svg/gear.svg');
+    background-size: cover;
+    width: 100px;
+    height: 100px;
+}

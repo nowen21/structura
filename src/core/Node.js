@@ -16,8 +16,8 @@ export class Node {
 
         this.posX = opciones.x || 100;
         this.posY = opciones.y || 100;
-        this.color = opciones.color || '#ffffff';
-        this.texto = opciones.texto || 'Nuevo nodo';
+        this.color = opciones.color || '#d41c1cff';
+        this.texto = opciones.texto || 'Nuevo nododd';
 
         this.elemento = this._crearElementoNodo();
 
@@ -33,33 +33,48 @@ export class Node {
     _crearElementoNodo() {
         const nodo = document.createElement('div');
         nodo.id = this.id;
-        nodo.className = 'nodo position-absolute border rounded bg-white p-2';
-        //nodo.contentEditable = true;
-        nodo.innerText = this.texto;
+        nodo.className = 'nodo position-absolute border rounded p-2';
         nodo.style.top = `${this.posY}px`;
         nodo.style.left = `${this.posX}px`;
-        nodo.style.backgroundColor = this.color;
-        // nuevo código 
 
-        // Contenido editable
+        // Definimos el contenido interno del nodo
         nodo.innerHTML = `
-            <div contentEditable="true" class="contenido-nodo">${this.texto}</div>
-            <div class="acciones-nodo">
-                <button class="btn-conectar" title="Conectar"><i class="bi bi-link-45deg"></i></button>
-                <button class="btn-eliminar" title="Eliminar"><i class="bi bi-x-circle"></i></button>
+    <div class="card shadow-sm border-0 h-100">
+        <div class="card-header">
+        ${this.texto}
+        </div>
+        <div class="card-body p-2 text-center">
+            <div contentEditable="true" class="contenido-nodo fw-semibold small text-dark">
+                
             </div>
-        `;
+        </div>
+        <div class="card-footer bg-transparent border-0 d-flex justify-content-between px-2 pt-0 acciones-nodo">
+            <button class="btn btn-sm btn-outline-primary btn-conectar" title="Conectar">
+                <i class="bi bi-link-45deg"></i>
+            </button>
+            <button class="btn btn-sm btn-outline-danger btn-eliminar" title="Eliminar">
+                <i class="bi bi-x-circle"></i>
+            </button>
+        </div>
+    </div>
+`;
 
-        // Eventos internos
+        // Aplica el color de fondo al contenido editable
+        const contenido = nodo.querySelector('.contenido-nodo');
+        contenido.style.backgroundColor = this.color;
+
+        // Eventos personalizados
         nodo.querySelector('.btn-eliminar').addEventListener('click', () => {
-            // En lugar de eliminar directamente, lanza un evento personalizado
-            const evento = new CustomEvent('eliminarNodo', {
-                detail: { nodo: this } // 'this' es la instancia de Node
-            });
-            nodo.dispatchEvent(evento);
+            nodo.dispatchEvent(new CustomEvent('eliminarNodo', { detail: { nodo: this } }));
         });
+
+        nodo.querySelector('.btn-conectar').addEventListener('click', () => {
+            nodo.dispatchEvent(new CustomEvent('modoConectarNodo', { detail: { nodo: this } }));
+        });
+
         return nodo;
     }
+
     getModificarVariables() {
         return { sel: this.nodoSeleccionado, con: this.modoConectar }
     }

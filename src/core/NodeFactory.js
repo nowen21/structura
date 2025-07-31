@@ -47,7 +47,7 @@ export class NodeFactory {
             case 'idea':
                 return {
                     texto: 'Nueva idea',
-                    color: '#27e350ff' // un tono cálido
+                    color: '#e32753ff' // un tono cálido
                 };
             case 'texto':
                 return {
