@@ -10,7 +10,7 @@ Este proyecto tiene como finalidad el desarrollo de un **framework interactivo, 
 ## 📁 Estructura del Proyecto
 
 El framework está organizado en una arquitectura modular, limpia y escalable. A continuación se describe la estructura actual del proyecto:
-
+```none
 ├── public/
 │ └── index.php # Punto de entrada principal (HTML base)
 ├── main.js # Archivo central que orquesta la lógica del framework
