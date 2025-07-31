@@ -40,7 +40,7 @@ El framework está organizado en una arquitectura modular, limpia y escalable. A
 │
 ├── LICENSE # Archivo de licencia del proyecto
 └── README.md # Documentación principal del proyecto
-
+```
 ---
 
 ### 🧩 Componentes ya desarrollados
